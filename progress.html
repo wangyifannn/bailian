@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>...</title>
+    <!--在IE浏览器中运行最新的渲染模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <!--初始化移动浏览器显示-->
+    <!--<meta name="viewport" content="width-device-width,inital-scale=1">-->
+    <link href="css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <style>
+        .content{
+            /*border:1px solid red;*/
+            min-width:600px;
+        }
+        .progress_box {
+            /*border: 1px solid red;*/
+            width:33.33%;
+            /*min-width:423px;*/
+            height: 98px;
+            padding: 10px 22px 0px;
+            background: url('img/progress_page/pro_background.png') no-repeat;
+            display:inline-block;
+            /*float:left;*/
+
+        }
+        .clear_float:after{
+            content:'';
+            clear:both;
+            display:block;
+        }
+        .progress {
+            height: 14px;
+            margin-bottom: 0px;
+
+            background:url('img/progress_page/pro_bar.png') no-repeat;
+            background-size:100% 100%;
+        }
+        
+        .progress-bar {
+            line-height: 14px;
+            background-color:#fb523f;
+        }
+        .progress-bar-green{
+            background-color:#49b570;
+            
+        }
+        .pro_com {
+            color: #f1f1f1;
+            font-size: 24px;
+        }
+        
+        .pro_com:after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+        
+        .pro_com span:nth-child(1) {
+            float: left;
+        }
+        
+        .pro_com span:nth-child(2) {
+            float: right;
+        }
+    </style>
+    <!--<link rel="stylesheet" type="text/css" href="index.css">-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                url: "./datatable.json",
+                type: "get",
+                success: function(res) {
+                    // console.log(res);
+                    var htmlpro = '';
+                    for (var i = 0; i < res.length; i++) {
+                        if(res[i].id>10){
+                            console.log(res[i]);
+                               htmlpro += '<div class="progress_box clear_float"><div class = "progress_top pro_com"><span> DTC - CNT </span> <span > '+res[i].id
+                        +' </span >' +
+                            '</div> <div class = "progress progress-striped active" >' +
+                            '<div id = "prog" class = "progress-bar" role = "progressbar"  aria-valuemin = "0" aria - valuemax = "100" style = "width:'+res[i].id+'%;" >'+
+                        '<span id="proglabel">'+res[i].id+'%</span> </div> </div> <div class = "progress_bottom pro_com">'+                 
+                            '<span> 0 </span> <span> 100 </span> </div> </div>';
+                        }else{
+   htmlpro += '<div class="progress_box clear_float"><div class = "progress_top pro_com"><span> DTC - CNT </span> <span > '+res[i].id
+                        +' </span >' +
+                            '</div> <div class = "progress progress-striped active" >' +
+                            '<div id = "prog" class = "progress-bar progress-bar-green" role = "progressbar"  aria-valuemin = "0" aria - valuemax = "100" style = "width:'+res[i].id+'%;" >'+
+                        '<span id="proglabel">'+res[i].id+'%</span> </div> </div> <div class = "progress_bottom pro_com">'+                 
+                            '<span> 0 </span> <span> 100 </span> </div> </div>';
+                        }
+                     
+
+                      
+                    //         // 判断值的大小范围
+                    // var progress_bar = document.getElementsByClassName("progress-bar");
+                    // console.log(progress_bar);
+                    }
+                    // console.log($(".progress-bar").prop("width"));
+                    // console.log(htmlpro);
+                    $(".content").html(htmlpro);
+
+                }
+            })
+
+            // var value = 0;
+            // var time = 50;
+            // //进度条复位函数
+            // function reset() {
+            //     value = 0
+            //     $("#prog").removeClass("progress-bar-success").css("width", "0%").text("等待启动");
+            //     //setTimeout(increment,5000);
+            // }
+            // //百分数增加，0-30时为红色，30-60为黄色，60-90为蓝色，>90为绿色
+            // function increment() {
+            //     value += 1;
+            //     $("#prog").css("width", value + "%").text(value + "%");
+            //     if (value >= 0 && value <= 99) {
+            //         $("#prog").addClass("progress-bar-color");
+            //     }
+            //     if (value >= 100) {
+            //         return;
+                // }
+            //     st = setTimeout(increment, time);
+            // }
+            // increment();
+
+        });
+    </script>
+</head>
+
+<body>
+    <!--<div class="wrap container">-->
+        <div class="header"></div>
+        <div class="content">
+            <!--<div class="progress_box">
+                <div class="progress_top pro_com">
+                    <span>DTC-CNT</span>
+                    <span>count</span>
+                </div>
+                <div class="progress progress-striped active">
+                    <div id="prog" class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width:0%;">
+                        <span id="proglabel">正在启动，请稍后......</span>
+                    </div>
+                </div>
+                <div class="progress_bottom pro_com">
+                    <span>0</span>
+                    <span>100</span>
+                </div>
+            </div>-->
+        </div>
+    <!--</div>-->
+</body>
+
+</html>

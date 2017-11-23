@@ -1,106 +1,110 @@
 [{
         "id": 0,
         "name": "Item 0",
-        "price": "$0"
+        "price": "count"
+    },{
+        "id": 0,
+        "name": "Item 0",
+        "price": "%"
     },
     {
         "id": 1,
         "name": "Item 1",
-        "price": "$1"
+        "price": "%"
     },
     {
         "id": 2,
         "name": "Item 2",
-        "price": "$2"
+        "price": "V2"
     },
     {
         "id": 3,
         "name": "Item 3",
-        "price": "$3"
+        "price": "V3"
     },
     {
         "id": 4,
         "name": "Item 4",
-        "price": "$4"
+        "price": "V4"
     },
     {
         "id": 5,
         "name": "Item 5",
-        "price": "$5"
+        "price": "V5"
     },
     {
         "id": 6,
         "name": "Item 6",
-        "price": "$6"
+        "price": "V6"
     },
     {
         "id": 7,
         "name": "Item 7",
-        "price": "$7"
+        "price": "V7"
     },
     {
         "id": 8,
         "name": "Item 8",
-        "price": "$8"
+        "price": "V8"
     },
     {
         "id": 9,
         "name": "Item 9",
-        "price": "$9"
+        "price": "V"
     },
     {
         "id": 10,
         "name": "Item 10",
-        "price": "$10"
+        "price": "V"
     },
     {
         "id": 11,
         "name": "Item 11",
-        "price": "$11"
+        "price": "V"
     },
     {
         "id": 12,
         "name": "Item 12",
-        "price": "$12"
+        "price": "V"
     },
     {
         "id": 13,
         "name": "Item 13",
-        "price": "$13"
+        "price": "V13"
     },
     {
         "id": 14,
         "name": "Item 14",
-        "price": "$14"
+        "price": "V14"
     },
     {
         "id": 15,
         "name": "Item 15",
-        "price": "$15"
+        "price": "V15"
     },
     {
         "id": 16,
         "name": "Item 16",
-        "price": "$16"
+        "price": "V16"
     },
     {
         "id": 17,
         "name": "Item 17",
-        "price": "$17"
+        "price": "V17"
     },
     {
         "id": 18,
         "name": "Item 18",
-        "price": "$18"
+        "price": "V18"
     },
     {
         "id": 19,
         "name": "Item 19",
-        "price": "$19"
+        "price": "V19"
     },
     {
         "id": 20,
         "name": "Item 20",
-        "price": "$20"
+        "price": "V20"
     }
 ]

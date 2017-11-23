@@ -10,13 +10,22 @@
     <!--<meta name="viewport" content="width-device-width,inital-scale=1">-->
     <link href="css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <style>
+        @media screen and (max-width: 1980px) and (min-width: 1180px) {
+        .progress_box {
+            width:25%;
+        }
+    }
+        @media screen and (max-width: 1180px) and (min-width:600px){
+        .progress_box {
+            width:33.33%;
+        }
+    }
         .content{
             /*border:1px solid red;*/
             min-width:600px;
         }
         .progress_box {
             /*border: 1px solid red;*/
-            width:33.33%;
             /*min-width:423px;*/
             height: 98px;
             padding: 10px 22px 0px;
@@ -25,6 +34,7 @@
             /*float:left;*/
 
         }
+        
         .clear_float:after{
             content:'';
             clear:both;
@@ -79,26 +89,20 @@
                     for (var i = 0; i < res.length; i++) {
                         if(res[i].id>10){
                             console.log(res[i]);
-                               htmlpro += '<div class="progress_box clear_float"><div class = "progress_top pro_com"><span> DTC - CNT </span> <span > '+res[i].id
+                               htmlpro += '<div class="progress_box clear_float"><div class = "progress_top pro_com"><span> DTC - CNT </span> <span > '+res[i].price
                         +' </span >' +
                             '</div> <div class = "progress progress-striped active" >' +
                             '<div id = "prog" class = "progress-bar" role = "progressbar"  aria-valuemin = "0" aria - valuemax = "100" style = "width:'+res[i].id+'%;" >'+
                         '<span id="proglabel">'+res[i].id+'%</span> </div> </div> <div class = "progress_bottom pro_com">'+                 
                             '<span> 0 </span> <span> 100 </span> </div> </div>';
                         }else{
-   htmlpro += '<div class="progress_box clear_float"><div class = "progress_top pro_com"><span> DTC - CNT </span> <span > '+res[i].id
+   htmlpro += '<div class="progress_box clear_float"><div class = "progress_top pro_com"><span> DTC - CNT </span> <span > '+res[i].price
                         +' </span >' +
                             '</div> <div class = "progress progress-striped active" >' +
                             '<div id = "prog" class = "progress-bar progress-bar-green" role = "progressbar"  aria-valuemin = "0" aria - valuemax = "100" style = "width:'+res[i].id+'%;" >'+
                         '<span id="proglabel">'+res[i].id+'%</span> </div> </div> <div class = "progress_bottom pro_com">'+                 
                             '<span> 0 </span> <span> 100 </span> </div> </div>';
                         }
-                     
-
-                      
-                    //         // 判断值的大小范围
-                    // var progress_bar = document.getElementsByClassName("progress-bar");
-                    // console.log(progress_bar);
                     }
                     // console.log($(".progress-bar").prop("width"));
                     // console.log(htmlpro);

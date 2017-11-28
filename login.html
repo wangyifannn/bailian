@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <!--在IE浏览器中运行最新的渲染模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <!--初始化移动浏览器显示-->
+    <!--<meta name="viewport" content="width-device-width,inital-scale=1">-->
+    <link href="css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <style>
+        * {
+            /*border: 1px solid red;*/
+        }
+        
+        body {
+            width: 100%;
+        }
+        
+        .bg {
+            width: 100%;
+            /*height: 844px;*/
+            height: 100%;
+            min-width: 1260px;
+            min-height: 700px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: -1;
+        }
+        
+        .logo_img {
+            position: absolute;
+            top: 33px;
+            left: 48px;
+            width: 175px;
+            height: 65px;
+            margin-left: 48px;
+        }
+        
+        .subject {
+            width: 449px;
+            min-width: 339px;
+            background: url("./img/login/subject_bg.png") no-repeat;
+            font-size: 48px;
+            font-family: Microsoft YaHei;
+            color: #f1f1f1;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 44px;
+        }
+        
+        .containers {
+            width: 90%;
+            margin: 0 auto;
+            min-width: 1260px;
+        }
+        
+        .content {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .input_box {
+            width: 33%;
+            height: 60px;
+            margin: 198px auto 44px;
+            background: url("./img/login/input_box.png") no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .input_box input {
+            width: 78%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            margin-left: 3%;
+            font-size: 24px;
+            font-family: Microsoft YaHei;
+            color: #c1c1c1;
+        }
+        
+        .input_box img {
+            width: 9%;
+            height: 30%;
+            /*margin-left: 10px;*/
+            cursor: pointer;
+            /*vertical-align: middle;*/
+            margin-top: -8px;
+        }
+        
+        .login_btn {
+            width: 33%;
+            height: 70px;
+            line-height: 70px;
+            font-size: 36px;
+            font-family: Microsoft YaHei;
+            color: #c1c1c1;
+            text-align: center;
+            border: none;
+            background: url("./img/login/login_bg.png") no-repeat;
+            background-size: 100% 100%;
+            /*backface-visibility: 
+            */
+        }
+        /*设置placeholder的颜色*/
+        
+         ::-webkit-input-placeholder {
+            /* WebKit browsers */
+            color: #c1c1c1;
+        }
+        
+         :-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: #c1c1c1;
+        }
+        
+         ::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: #c1c1c1;
+        }
+        
+         :-ms-input-placeholder {
+            /* Internet Explorer 10+ */
+            color: #c1c1c1;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <img class="bg" src="./img/login/bg.png" alt="">
+
+        <img class="logo_img" src="./img/login/logo.png" alt="">
+        <div class="containers">
+            <p class="subject">HPDT-1200G</p>
+            <div class="content">
+                <div class="input_box">
+                    <input class="pass" type="password" name="" value="" placeholder="请输入管理员密码">
+                    <img src="./img/login/eye.png" alt="">
+                </div>
+                <input class="login_btn" type="button" value="登录">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var pass = document.getElementsByClassName("pass")[0];
+    // console.log(pass);
+    $(document).ready(function() {
+
+        // 浏览器页面的宽和高
+        document.body.clientWidth
+            // 密码是否可见
+        var flag = false;
+        $(".input_box img").click(function() {
+            if (flag == false) {
+                pass.type = "text";
+                flag = true;
+            } else {
+                pass.type = "password";
+                flag = false;
+            }
+        });
+
+    })
+</script>
+
+</html>

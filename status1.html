@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>...</title>
+    <!--在IE浏览器中运行最新的渲染模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <!--初始化移动浏览器显示-->
+    <!--<meta name="viewport" content="width-device-width,inital-scale=1">-->
+    <link href="css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <style>
+        * {
+            /*border: 1px solid red;*/
+        }
+        
+        body {
+            background: black;
+        }
+        
+        .content {
+            margin: 50px auto;
+        }
+        
+        .status_box {
+            width: 565px;
+            /*background: black;*/
+            background: url('img/progress_page/pro_background.png') no-repeat;
+            background-size: 100% 100%;
+            color: #f1f1f1;
+            /*border: 1px solid grey;*/
+            display: inline-block;
+            padding-left: 28px;
+            padding-bottom: 20px;
+            /*padding: 10px 20px;*/
+            /*margin-top: 10px;*/
+        }
+        
+        .status_title {
+            font-size: 30px;
+            font-family: SimHei;
+        }
+        
+        .con_row {
+            margin: 5px auto;
+        }
+        
+        .row_cont {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background: url("./img/progress_page/grey_block.png") no-repeat;
+            background-size: 100% 100%;
+            text-align: center;
+            color: black;
+            line-height: 20px;
+            font-family: SimHei;
+            font-size: 18px;
+        }
+        
+        .row_Name {
+            font-family: SimHei;
+            font-size: 18px;
+            margin-left: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="container">
+        <div class="content">
+
+        </div>
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var status_con = '';
+    $(document).ready(function() {
+        function createFather(fatherCode, fatherName) {
+            var htmlpro = `
+                          <div class="status_box">
+                            <div class="status_title">
+                                ${fatherCode}
+                            </div>
+                            <div class="status_content">
+                               
+                                </div>
+                            </div>
+                          </div>
+                        `;
+            var $htmlpro = $(htmlpro);
+            $(".content").append($htmlpro);
+        }
+
+        function createSon(parendNode, sonCode, sonName) {
+            // console.log(parendNode);
+            var sonHtml = "";
+            // console.log(sonCode);
+            sonHtml = `
+                    <div class="con_row">
+                           <span class="row_cont">${sonCode}</span>
+                            <span class="row_Name">${sonName}</span>
+                    `;
+            // console.log(sonHtml);
+            parendNode.innerHTML += sonHtml;
+        }
+        var ii = [];
+        $.ajax({
+            url: "./status.json",
+            type: "get",
+            async: false,
+            success: function(res) {
+                res = res.photos.photo;
+                console.log(res);
+                var htmlpro = '';
+                var status_content_html = '';
+                var Father = res;
+                for (var i = 0; i < Father.length; i++) {
+                    var fatherCode = Father[i].id;
+                    var fatherName = Father[i].subject;
+                    var sonList = Father[i].owner;
+                    // console.log(sonList.length);
+                    createFather(fatherCode, fatherName);
+                    var $elements = $('.status_content');
+                    // var len = $elements.length;
+                    // console.log($(".status_content"));
+                    // console.log($elements[i]);
+                    for (var q = 0; q < sonList.length; q++) {
+                        var sonCode = sonList[q].id;
+                        var sonName = sonList[q].text;
+                        // console.log("sonList[q].id=" + sonList[q].id)
+                        createSon($elements[i], sonCode, sonName);
+                    }
+                }
+            }
+        })
+    })
+</script>
+
+</html>

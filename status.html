@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>...</title>
+    <!--在IE浏览器中运行最新的渲染模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <!--初始化移动浏览器显示-->
+    <!--<meta name="viewport" content="width-device-width,inital-scale=1">-->
+    <link href="css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <style>
+        * {
+            border: 1px solid red;
+        }
+        
+        @media screen and (max-width: 1980px) and (min-width: 1180px) {
+            .progress_box {
+                width: 25%;
+            }
+        }
+        
+        @media screen and (max-width: 1180px) and (min-width:600px) {
+            .progress_box {
+                width: 33.33%;
+            }
+        }
+        
+        .content {
+            min-width: 600px;
+        }
+        
+        .row_block {
+            width: 20px;
+            height: 20px;
+            /*background: url('img/progress_page/grey_block.png') no-repeat;*/
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="content">
+
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // /加载父节点的函数
+        // function Fatherbox(title) {
+        //     htmlpro += `
+        //                   <div class="status_box">
+        //                     <div class="status_title">
+        //                         Support status of non-continuou
+        //                     </div>
+        //                     <div class="status_content">
+
+        //                     </div>
+        //                   </div>
+        //                 `;
+        // }
+        // // 加载子节点的函数
+        // function Cbox(id, text) {
+        //     status_content_html += `
+        //                 <div class="con_row">
+        //                     <img class="row_block" src="./img/progress_page/grey_block.png" alt="">
+        //                     <span class="row_cont">${text}</span>
+        //                  </div>
+        //                 `;
+        // }
+        var conArr = [];
+
+        $.ajax({
+            url: "./data.json",
+            type: "get",
+            async: false,
+            success: function(res) {
+                res = res.photos.photo;
+                console.log(res);
+                var htmlpro = '';
+                var status_content_html = '';
+                for (var i = 0; i < res.length; i++) {
+                    htmlpro += `
+                          <div class="status_box">
+                            <div class="status_title">
+                                Support status of non-continuou
+                            </div>
+                            <div class="status_content">
+
+                            </div>
+                          </div>
+                        `;
+                    for (j = 0; j < res[i].owner.length; j++) {
+                        // console.log(res[i].owner.length);
+                        status_content_html += `
+                        <div class="con_row">
+                            <img class="row_block" src="./img/progress_page/grey_block.png" alt="">
+                            <span class="row_cont">${res[i].owner[j].text}</span>
+                         </div>
+                        `;
+
+                        // status_content[i].appendChild(status_content_html);
+                        // $(".content").html($(".content").html + htmlpro);
+                    }
+                    conArr.push(status_content_html);
+                    // console.log(status_content_html);
+                    // console.log($(".status_content"));
+                    // $(".status_content").html(status_content_html);
+                    // $(".status_content")[i].appendChild(status_content_html);
+                    // console.log(htmlpro);
+                    $(".content").html(htmlpro);
+                }
+
+            }
+        })
+        var status_content = document.getElementsByClassName("status_content");
+        console.log(status_content);
+        console.log(conArr[2]);
+        for (var jj = 0; jj < status_content.length; jj++) {
+            status_content[jj].innerHTML = conArr[jj];
+            // status_content[jj].html(conArr[jj]);
+        }
+    })
+</script>
+
+</html>

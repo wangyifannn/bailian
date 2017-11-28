@@ -82,15 +82,14 @@
             font-family: Microsoft YaHei;
             color: #c1c1c1;
         }
-        
-        .input_box img {
+        /*.input_box img {
             width: 9%;
             height: 30%;
             /*margin-left: 10px;*/
-            cursor: pointer;
-            /*vertical-align: middle;*/
-            margin-top: -8px;
-        }
+        /*vertical-align: middle;*/
+        /*cursor: pointer;*/
+        /*margin-top: -8px;*/
+        /*}*/
         
         .login_btn {
             width: 33%;
@@ -103,8 +102,10 @@
             border: none;
             background: url("./img/login/login_bg.png") no-repeat;
             background-size: 100% 100%;
-            /*backface-visibility: 
-            */
+        }
+        
+        .login_btn:hover {
+            background: url("./img/login/bogin_bg_hover.png") no-repeat;
         }
         /*设置placeholder的颜色*/
         
@@ -141,7 +142,7 @@
             <div class="content">
                 <div class="input_box">
                     <input class="pass" type="password" name="" value="" placeholder="请输入管理员密码">
-                    <img src="./img/login/eye.png" alt="">
+                    <!--<img src="./img/login/eye.png" alt="">-->
                 </div>
                 <input class="login_btn" type="button" value="登录">
             </div>

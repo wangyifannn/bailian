@@ -157,12 +157,12 @@
             <p class="subject">HPDT-1200G</p>
             <div class="content">
                 <div class="input_box">
-                    <input class="pass" type="password" name="" value="" maxlength=16 placeholder="请输入管理员密码">
+                    <input class="pass" type="password" name="" value="" minlength="6" maxlength="16" placeholder="请输入管理员密码">
                     <i class="eye_logo glyphicon glyphicon-eye-close"></i>
 
                     <!--<img src="./img/login/eye.png" alt="">-->
                 </div>
-                <p class="tips">密码必须有大小写字母和数字且6-20位</p>
+                <p class="tips">密码由大小写字母或数字组成且为6-20位</p>
                 <input class="login_btn" type="button" value="登录">
             </div>
         </div>
@@ -197,7 +197,8 @@
         $(".pass").bind('input porpertychange', function() {
             var tips = document.getElementsByClassName("tips")[0];
             var pw1Num = $(this).val();
-            var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d]{8,16}$/g; //密码必须有大小写字母和数字且6-20位
+            // var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d]{6,16}$/g; //密码必须有大小写字母和数字且6-20位
+            var re = /^[0-9a-zA-Z_]{6,16}$/g; //密码由大小写字母或数字组成且为6-20位
             var rez = re.test(pw1Num);
             console.log(pw1Num);
             if (rez == true) {

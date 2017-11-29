@@ -218,6 +218,7 @@
                     url: "./userLogin.json",
                     type: "get",
                     success: function(res) {
+                        console.log(res);
                         console.log(res.userInfo.passWord);
                         if (res.status == 0) {
                             if (res.userInfo.passWord == pass.value) {

@@ -1,129 +1,245 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 
 <head>
+    <title>管理系统</title>
     <meta charset="UTF-8">
-    <title>...</title>
-    <!--在IE浏览器中运行最新的渲染模式-->
-    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
-    <!--初始化移动浏览器显示-->
-    <!--<meta name="viewport" content="width-device-width,inital-scale=1">-->
-    <link href="css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="css/unicorn.main.css" />
+    <link rel="stylesheet" href="css/unicorn.grey.css" class="skin-color" />
+    <link href="https://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/css/bootstrap-select.min.css" rel="stylesheet">
+
     <style>
-        * {
-            border: 1px solid red;
+        .panel-title {
+            text-align: center;
+            margin-top: 50px;
+        }
+        /*status页面*/
+        
+        .status_box {
+            width: 565px;
+            /*background: black;*/
+            background: url('img/progress_page/pro_background.png') no-repeat;
+            background-size: 100% 100%;
+            color: #f1f1f1;
+            /*border: 1px solid grey;*/
+            display: inline-block;
+            padding-left: 28px;
+            padding-bottom: 20px;
+            /*padding: 10px 20px;*/
+            /*margin-top: 10px;*/
         }
         
-        @media screen and (max-width: 1980px) and (min-width: 1180px) {
-            .progress_box {
-                width: 25%;
-            }
+        .status_title {
+            font-size: 30px;
+            font-family: SimHei;
         }
         
-        @media screen and (max-width: 1180px) and (min-width:600px) {
-            .progress_box {
-                width: 33.33%;
-            }
+        .con_row {
+            margin: 5px auto;
         }
         
-        .content {
-            min-width: 600px;
-        }
-        
-        .row_block {
+        .row_cont {
             width: 20px;
             height: 20px;
-            /*background: url('img/progress_page/grey_block.png') no-repeat;*/
+            display: inline-block;
+            background: url("./img/progress_page/grey_block.png") no-repeat;
+            background-size: 100% 100%;
+            text-align: center;
+            color: black;
+            line-height: 20px;
+            font-family: SimHei;
+            font-size: 18px;
+        }
+        
+        .row_Name {
+            font-family: SimHei;
+            font-size: 18px;
+            margin-left: 8px;
         }
     </style>
-
 </head>
 
-<body>
-    <div class="header"></div>
-    <div class="content">
+<body data-spy="scroll" data-target="#myScrollspy">
+    <div id="header">
+        <h1><a href="./dashboard.html">UniAdmin</a></h1>
+    </div>
+
+    <div id="search">
+        <input type="text" placeholder="请输入搜索内容..." />
+        <button type="submit" class="tip-right" title="Search"><i class="icon-search icon-white"></i></button>
+    </div>
+    <div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav btn-group">
+            <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">个人资料</span></a></li>
+            <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">消息</span> <span class="label label-important">5</span> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a class="sAdd" title="" href="#">新消息</a></li>
+                    <li><a class="sInbox" title="" href="#">收件箱</a></li>
+                    <li><a class="sOutbox" title="" href="#">发件箱</a></li>
+                    <li><a class="sTrash" title="" href="#">发送</a></li>
+                </ul>
+            </li>
+            <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">设置</span></a></li>
+            <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+        </ul>
+    </div>
+
+    <div id="sidebar">
+        <ul>
+            <li class="active"><a href="自定义导出按钮.html"><i class="icon icon-home"></i> <span>首页</span></a></li>
+
+            <li><a href="tables.html"><i class="icon icon-th"></i> <span>表格</span></a></li>
+            <li>
+                <a href="status1.html"><i class="icon icon-signal"></i> <span>图表统计</span></a>
+            </li>
+
+        </ul>
 
     </div>
+
+    <div id="content">
+        <div id="content-header">
+            <h1>控制台</h1>
+            <div class="btn-group">
+                <a class="btn btn-large tip-bottom" title="Manage Files"><i class="icon-file"></i></a>
+                <a class="btn btn-large tip-bottom" title="Manage Users"><i class="icon-user"></i></a>
+                <a class="btn btn-large tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a>
+                <a class="btn btn-large tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a>
+            </div>
+        </div>
+        <div id="breadcrumb">
+            <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 首页</a>
+            <a href="#" class="current">控制台</a>
+        </div>
+        <div class="container-fluid">
+            <!--手机导航栏侧滑-->
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Status展示</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="content">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
 </body>
+
+<!--<script src="./dist/js/jquery.min.js">
+</script>
+<script src="./dist/js/bootstrap.min.js">
+</script>-->
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.js"></script>
+<script type="text/javascript" src="js/xlsx.core.min.js"></script>
+<script type="text/javascript" src="js/FileSaver.min.js"></script>
+<!--<script type="text/javascript" src="./dist/js/blob.js"></script>-->
+<script type="text/javascript" src="js/bootstrap-table-export.js"></script>
+<script type="text/javascript" src="js/tableExport.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        // /加载父节点的函数
-        // function Fatherbox(title) {
-        //     htmlpro += `
-        //                   <div class="status_box">
-        //                     <div class="status_title">
-        //                         Support status of non-continuou
-        //                     </div>
-        //                     <div class="status_content">
+    var $table = $('#table');
+    $(function() {
+        $('#toolbar').find('select').change(function() {
+            $table.bootstrapTable('destroy').bootstrapTable({
+                exportDataType: $(this).val()
+            });
+        });
+    })
 
-        //                     </div>
-        //                   </div>
-        //                 `;
-        // }
-        // // 加载子节点的函数
-        // function Cbox(id, text) {
-        //     status_content_html += `
-        //                 <div class="con_row">
-        //                     <img class="row_block" src="./img/progress_page/grey_block.png" alt="">
-        //                     <span class="row_cont">${text}</span>
-        //                  </div>
-        //                 `;
-        // }
-        var conArr = [];
+    window.operateEvents1 = {
+        'click .RoleOfA': function(e, value, row, index) {
+            console.log(row);
+            for (var i in row) console.log(i);
+        }
+    };
 
-        $.ajax({
-            url: "./data.json",
-            type: "get",
-            async: false,
-            success: function(res) {
-                res = res.photos.photo;
-                console.log(res);
-                var htmlpro = '';
-                var status_content_html = '';
-                for (var i = 0; i < res.length; i++) {
-                    htmlpro += `
+    function operateFormatter1(value, row, index) {
+        return [
+            '<button id="btn_detail" type="button" class="RoleOfA btn-default bt-select btn btn-primary">详情</button>',
+        ].join('');
+    }
+
+    function operateFormatter2(value, row, index) {
+        return [
+            '<button id="btn_detail" type="button" class="RoleOfA btn-default bt-select btn btn-primary">导出</button>',
+        ].join('');
+    }
+
+    // status也main
+    function createFather(fatherCode, fatherName) {
+        var htmlpro = `
                           <div class="status_box">
                             <div class="status_title">
-                                Support status of non-continuou
+                                ${fatherCode}
                             </div>
                             <div class="status_content">
-
+                               
+                                </div>
                             </div>
                           </div>
                         `;
-                    for (j = 0; j < res[i].owner.length; j++) {
-                        // console.log(res[i].owner.length);
-                        status_content_html += `
-                        <div class="con_row">
-                            <img class="row_block" src="./img/progress_page/grey_block.png" alt="">
-                            <span class="row_cont">${res[i].owner[j].text}</span>
-                         </div>
-                        `;
+        var $htmlpro = $(htmlpro);
+        $(".content").append($htmlpro);
+    }
 
-                        // status_content[i].appendChild(status_content_html);
-                        // $(".content").html($(".content").html + htmlpro);
-                    }
-                    conArr.push(status_content_html);
-                    // console.log(status_content_html);
-                    // console.log($(".status_content"));
-                    // $(".status_content").html(status_content_html);
-                    // $(".status_content")[i].appendChild(status_content_html);
-                    // console.log(htmlpro);
-                    $(".content").html(htmlpro);
+    function createSon(parendNode, sonCode, sonName) {
+        // console.log(parendNode);
+        var sonHtml = "";
+        // console.log(sonCode);
+        sonHtml = `
+                    <div class="con_row">
+                           <span class="row_cont">${sonCode}</span>
+                            <span class="row_Name">${sonName}</span>
+                    `;
+        // console.log(sonHtml);
+        parendNode.innerHTML += sonHtml;
+    }
+    var ii = [];
+    $.ajax({
+        url: "./status.json",
+        type: "get",
+        async: false,
+        success: function(res) {
+            res = res.photos.photo;
+            console.log(res);
+            var htmlpro = '';
+            var status_content_html = '';
+            var Father = res;
+            for (var i = 0; i < Father.length; i++) {
+                var fatherCode = Father[i].id;
+                var fatherName = Father[i].subject;
+                var sonList = Father[i].owner;
+                // console.log(sonList.length);
+                createFather(fatherCode, fatherName);
+                var $elements = $('.status_content');
+                // var len = $elements.length;
+                // console.log($(".status_content"));
+                // console.log($elements[i]);
+                for (var q = 0; q < sonList.length; q++) {
+                    var sonCode = sonList[q].id;
+                    var sonName = sonList[q].text;
+                    // console.log("sonList[q].id=" + sonList[q].id)
+                    createSon($elements[i], sonCode, sonName);
                 }
-
             }
-        })
-        var status_content = document.getElementsByClassName("status_content");
-        console.log(status_content);
-        console.log(conArr[2]);
-        for (var jj = 0; jj < status_content.length; jj++) {
-            status_content[jj].innerHTML = conArr[jj];
-            // status_content[jj].html(conArr[jj]);
         }
     })
 </script>
+
 
 </html>

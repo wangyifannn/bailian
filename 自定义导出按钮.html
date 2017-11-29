@@ -51,7 +51,7 @@
 
             <li><a href="tables.html"><i class="icon icon-th"></i> <span>表格</span></a></li>
             <li>
-                <a href="charts.html"><i class="icon icon-signal"></i> <span>图表统计</span></a>
+                <a href="status1.html"><i class="icon icon-signal"></i> <span>图表统计</span></a>
             </li>
 
         </ul>
@@ -144,10 +144,6 @@
     window.operateEvents1 = {
         'click .RoleOfA': function(e, value, row, index) {
             console.log(row);
-            // detailmodal.open();  
-            // $("#dev_id").val(row.id);  
-            // $("#seq_no").val(row.seq_no);  
-            // $("#dev_pos").val(row.position);  
             for (var i in row) console.log(i);
         }
     };

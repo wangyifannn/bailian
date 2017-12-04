@@ -20,7 +20,6 @@
         
         .bg {
             width: 100%;
-            /*height: 844px;*/
             height: 100%;
             min-width: 1260px;
             min-height: 700px;
@@ -39,16 +38,34 @@
             margin-left: 48px;
         }
         
+        .nav {
+            width: 58%;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 33px;
+        }
+        
+        .nav img {
+            vertical-align: middle;
+            margin-top: 11px;
+        }
+        
+        .icon_left {
+            float: left;
+        }
+        
+        .icon_right {
+            float: right;
+        }
+        
         .subject {
-            width: 370px;
             min-width: 339px;
-            /*background: url("./img/login/subject_bg.png") no-repeat;*/
+            display: inline-block;
             font-size: 48px;
             font-family: Microsoft YaHei;
             color: #f1f1f1;
             text-align: center;
             margin: 0 auto;
-            margin-top: 44px;
         }
         
         .containers {
@@ -89,14 +106,11 @@
             height: 40%;
             margin-left: 10px;
             cursor: pointer;
-            /*border: 1px solid red;*/
         }
         
         .tips {
             width: 33%;
             margin: 5px auto 0px;
-            /*margin-bottom: 20px;*/
-            /*border: 1px solid red;*/
             color: red;
             opacity: 0.7;
             display: none;
@@ -105,8 +119,6 @@
         
         .login_btn {
             width: 33%;
-            /*display: inline-block;*/
-            /*margin: 0 auto;*/
             margin-left: 33.3333%;
             margin-top: 24px;
             height: 70px;
@@ -154,7 +166,11 @@
 
         <img class="logo_img" src="./img/login/logo.png" alt="">
         <div class="containers">
-            <p class="subject">HPDT-1200G</p>
+            <div class="nav">
+                <img class="icon_left" src="./img/login/icon_left.png" alt="">
+                <span class="subject">HPDT-1200G</span>
+                <img class="icon_right" src="./img/login/icon_right.png" alt="">
+            </div>
             <div class="content">
                 <div class="input_box">
                     <input class="pass" type="password" name="" value="" minlength="6" maxlength="16" placeholder="请输入管理员密码">
